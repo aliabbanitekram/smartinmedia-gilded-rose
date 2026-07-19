@@ -1,9 +1,10 @@
-# Gilded Rose starting position in C# xUnit
+# Gilded Rose Refactoring Kata
+
+This repository contains the C# xUnit version of the Gilded Rose Refactoring Kata.
+
+The project uses the .NET SDK version configured in `global.json`.
 
 ## Build the project
-
-Use your normal build tools to build the projects in Debug mode.
-For example, you can use the `dotnet` command line tool:
 
 ``` cmd
 dotnet build GildedRose.sln -c Debug
@@ -14,7 +15,7 @@ dotnet build GildedRose.sln -c Debug
 For e.g. 10 days:
 
 ``` cmd
-GildedRose/bin/Debug/net8.0/GildedRose 10
+dotnet run --project GildedRose -- 10
 ```
 
 ## Run all the unit tests
