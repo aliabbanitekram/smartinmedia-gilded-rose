@@ -4,6 +4,11 @@ namespace GildedRoseKata;
 
 public class GildedRose
 {
+    private const string AgedBrie = "Aged Brie";
+    private const string BackstagePass = "Backstage passes to a TAFKAL80ETC concert";
+    private const string Conjured = "Conjured";
+    private const string Sulfuras = "Sulfuras, Hand of Ragnaros";
+
     IList<Item> Items;
 
     public GildedRose(IList<Item> Items)
@@ -127,21 +132,21 @@ public class GildedRose
 
     private static bool IsAgedBrie(Item item)
     {
-        return item.Name == "Aged Brie";
+        return item.Name == AgedBrie;
     }
 
     private static bool IsBackstagePass(Item item)
     {
-        return item.Name == "Backstage passes to a TAFKAL80ETC concert";
+        return item.Name == BackstagePass;
     }
 
     private static bool IsConjured(Item item)
     {
-        return item.Name.StartsWith("Conjured");
+        return item.Name.StartsWith(Conjured);
     }
 
     private static bool IsSulfuras(Item item)
     {
-        return item.Name == "Sulfuras, Hand of Ragnaros";
+        return item.Name == Sulfuras;
     }
 }
