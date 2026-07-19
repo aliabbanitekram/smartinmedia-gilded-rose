@@ -32,6 +32,12 @@ public class GildedRose
                 continue;
             }
 
+            if (IsConjured(item))
+            {
+                UpdateConjuredItem(item);
+                continue;
+            }
+
             UpdateNormalItem(item);
         }
     }
@@ -55,6 +61,19 @@ public class GildedRose
         if (IsPastSellByDate(item))
         {
             IncreaseQuality(item);
+        }
+    }
+
+    private static void UpdateConjuredItem(Item item)
+    {
+        DecreaseQuality(item);
+        DecreaseQuality(item);
+        DecreaseSellIn(item);
+
+        if (IsPastSellByDate(item))
+        {
+            DecreaseQuality(item);
+            DecreaseQuality(item);
         }
     }
 
@@ -114,6 +133,11 @@ public class GildedRose
     private static bool IsBackstagePass(Item item)
     {
         return item.Name == "Backstage passes to a TAFKAL80ETC concert";
+    }
+
+    private static bool IsConjured(Item item)
+    {
+        return item.Name.StartsWith("Conjured");
     }
 
     private static bool IsSulfuras(Item item)

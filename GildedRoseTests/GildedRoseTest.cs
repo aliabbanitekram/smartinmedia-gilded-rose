@@ -114,6 +114,33 @@ public class GildedRoseTest
         Assert.Equal(50, item.Quality);
     }
 
+    [Fact]
+    public void ConjuredItem_DegradesTwiceAsFastAsNormalItem()
+    {
+        Item item = UpdateSingleItem("Conjured Mana Cake", sellIn: 3, quality: 6);
+
+        Assert.Equal(2, item.SellIn);
+        Assert.Equal(4, item.Quality);
+    }
+
+    [Fact]
+    public void ConjuredItem_DegradesTwiceAsFastAfterSellByDate()
+    {
+        Item item = UpdateSingleItem("Conjured Mana Cake", sellIn: 0, quality: 6);
+
+        Assert.Equal(-1, item.SellIn);
+        Assert.Equal(2, item.Quality);
+    }
+
+    [Fact]
+    public void ConjuredItem_QualityNeverBecomesNegative()
+    {
+        Item item = UpdateSingleItem("Conjured Mana Cake", sellIn: 0, quality: 3);
+
+        Assert.Equal(-1, item.SellIn);
+        Assert.Equal(0, item.Quality);
+    }
+
     private static Item UpdateSingleItem(string name, int sellIn, int quality)
     {
         IList<Item> items = new List<Item> { new Item { Name = name, SellIn = sellIn, Quality = quality } };
